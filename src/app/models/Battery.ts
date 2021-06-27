@@ -23,7 +23,7 @@ export class Battery {
 
 
     public getId(): number { return this.id; }
-    public getVoltage(): number { return this.voltage > this.MAX_VOLTAGE ? this.MAX_VOLTAGE : this.voltage; }
+    public getVoltage(): number { return this.voltage /*> this.MAX_VOLTAGE ? this.MAX_VOLTAGE : this.voltage;*/ }
     public getTemp(): number { return this.temperature; }
     public getMaxVoltage() : number { return this.MAX_VOLTAGE; }
     public getMinVoltage() : number { return this.MIN_VOLTAGE; }
@@ -55,6 +55,10 @@ export class Battery {
 
     public isBatteryLow(): boolean {
         return this.getPercentage() < 75;
+    }
+
+    public isFullCharge(): boolean {
+        return this.getPercentage() === 100;
     }
 
     public getTotalCharge(): number {

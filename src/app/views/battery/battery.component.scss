@@ -35,6 +35,23 @@
         filter: brightness(50%) sepia(200%);
     }
 
+    .full-battery {
+        filter: grayscale(100%) brightness(100%) sepia(100%) hue-rotate(50deg) saturate(900%) contrast(0.8);
+    }
+
+    .temp-problem, .voltage-problem {
+        color: red;
+        animation-name: parpadeo;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    @keyframes parpadeo {  
+        0% { opacity: 1.0; }
+         50% { opacity: 0.0; }
+        100% { opacity: 1.0; }
+    }
+
     .information-wrapper {
         display: flex;
         flex-direction: column;
