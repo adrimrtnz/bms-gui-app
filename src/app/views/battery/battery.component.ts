@@ -20,7 +20,6 @@ export class BatteryComponent implements OnInit {
       
   }
 
-
   public getBatteryStyle(): object {
     const inversePercentage = 100 - this.battery.getPercentage();
     

@@ -18,6 +18,10 @@ export class AppComponent {
   constructor( private batteriesService: BatteriesService) { 
     this.batteries = batteriesService.getBatteries();
     console.log(this.batteries);
-
   }
+
+  public getTotalCharge(): number {
+    return this.batteriesService.getTotalCharge();
+  }
+
 }
