@@ -1,12 +1,15 @@
 <div class="bms-tab">
 
-  <h1 class="title">BMSA</h1>
+  <h1 class="title">BMS LV</h1>
   
   <br>
 
     <div class="batteries-wrapper">
       <table>
         <td><app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery></td>
+        <td>
+          <img class="general-charge-img" src="../assets/img/charge.svg" alt="">
+        </td>
         <td><app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery></td>
       </table>
     </div>
@@ -14,3 +17,15 @@
   <br>
 
 </div>
+
+<footer>
+  <div class="bms-footer">
+    <img class="elipse-inf" src="../../assets/img/elipse-inf.svg" alt="">
+
+    <div class="container">
+        <img class="lighting-icon" src="../../assets/img/lightning.svg" alt="" >
+        <p class="state-machine">OPERATIONAL STATE: METER DATOS</p>
+    </div>
+
+  </div>
+</footer>

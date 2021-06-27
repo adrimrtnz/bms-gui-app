@@ -1,23 +1,32 @@
 export class Battery {
 
     private readonly TOTAL_VOLTAGE = 40;
+    private readonly MIN_VOLTAGE = 0;
+    private readonly MAX_VOLTAGE = 40;
+    private readonly MIN_TEMP = 0;
+    private readonly MAX_TEMP = 40;
 
     private id: number;
     private voltage: number;
-    private temperature1: number;
+    private temperature: number;
+
 
 
     constructor(id: number){
         this.id = id;
         
         this.voltage = 0;
-        this.temperature1 = 0;
+        this.temperature = 0;
     }
 
 
     public getId(): number { return this.id; }
     public getVoltage(): number { return this.voltage > this.TOTAL_VOLTAGE ? this.TOTAL_VOLTAGE : this.voltage; }
-    public getTemperature1(): number { return this.temperature1; }
+    public getTemp(): number { return this.temperature; }
+    public getMaxVoltage() : number { return this.MAX_VOLTAGE; }
+    public getMinVoltage() : number { return this.MIN_VOLTAGE; }
+    public getMaxTemp() : number { return this.MAX_TEMP; }
+    public getMinTemp() : number { return this.MIN_TEMP; }
 
 
     public getPercentage(): number {
@@ -29,7 +38,7 @@ export class Battery {
 
     public changeRandom() {
         this.voltage += this.random(2);
-        this.temperature1 += this.random(2);
+        this.temperature += this.random(2);
     }
 
     private random(n: number): number {
@@ -38,7 +47,7 @@ export class Battery {
 
     public updateInfo(voltage: number, temperature1: number, temperature2: number) {
         this.voltage = voltage;
-        this.temperature1 = temperature1;
+        this.temperature = temperature1;
     }
 
     public isBatteryLow(): boolean {

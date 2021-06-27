@@ -1,28 +1,26 @@
 <div class="battery-wrapper">
 
-   
+    <div class="image-wrapper">
+        <img class="outline" src="../../assets/img/battery-outline.svg" alt="">
+        <img [ngStyle]="this.getBatteryStyle()" class = "filling" [ngClass]="this.batteryClasses" src="../../assets/img/battery-filling.svg" alt="">
+    </div>
 
     <div class="information-wrapper">
-
-        <span class="title">Nº {{this.battery.getId()}} </span>
 
         <div class="table-wrapper">
 
             <table>
 
                 <tr>
-                    <td class="property-value"> {{this.battery.getVoltage()}} </td>
-                    <td class="property-units">V</td>
-                </tr>
-                    
-                <tr>
-                    <td class="property-value"> {{this.battery.getTemperature1()}} </td>
-                    <td class="property-units">ºC</td>
+                    <td class="property-voltage"> <strong>{{this.battery.getPercentage()}}%</strong></td>
                 </tr>
 
                 <tr>
-                    <td class="property-value"> {{this.battery.getPercentage()}} </td>
-                    <td class="property-units">%</td>
+                    <td class="property-value">Max: {{this.battery.getMinVoltage()}}V | Out: {{this.battery.getVoltage()}}V | Max: {{this.battery.getMaxVoltage()}}V</td>
+                </tr>
+                    
+                <tr>
+                    <td class="property-value">Max: {{this.battery.getMinTemp()}}ºC | Out: {{this.battery.getTemp()}}ºC | Max: {{this.battery.getMaxTemp()}}ºC</td>
                 </tr>
 
             </table>
@@ -31,9 +29,7 @@
 
     </div>
 
-    <div class="image-wrapper">
-        <img class="outline" src="../../assets/img/battery-outline.svg" alt="">
-        <img [ngStyle]="this.getBatteryStyle()" class = "filling" [ngClass]="this.batteryClasses" src="../../assets/img/battery-filling.svg" alt="">
-    </div>
+        
+
 
 </div>
