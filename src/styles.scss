@@ -9,25 +9,3 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-.bms-footer {
-    position: relative;
-
-    .container {
-        font-size: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-top: 150px;
-    }
-    .state-machine {
-        position: relative;
-        text-align: center;
-    }
-
-    .elipse-inf {
-        position: absolute;
-        align-content: center;
-        padding-top: 50px;
-    }
-}

@@ -1,6 +1,8 @@
+import { BatteriesService } from "../services/batteries.service";
+import { BatteryComponent } from "../views/battery/battery.component";
+
 export class Battery {
 
-    private readonly TOTAL_VOLTAGE = 40;
     private readonly MIN_VOLTAGE = 0;
     private readonly MAX_VOLTAGE = 40;
     private readonly MIN_TEMP = 0;
@@ -21,7 +23,7 @@ export class Battery {
 
 
     public getId(): number { return this.id; }
-    public getVoltage(): number { return this.voltage > this.TOTAL_VOLTAGE ? this.TOTAL_VOLTAGE : this.voltage; }
+    public getVoltage(): number { return this.voltage > this.MAX_VOLTAGE ? this.MAX_VOLTAGE : this.voltage; }
     public getTemp(): number { return this.temperature; }
     public getMaxVoltage() : number { return this.MAX_VOLTAGE; }
     public getMinVoltage() : number { return this.MIN_VOLTAGE; }
@@ -30,11 +32,12 @@ export class Battery {
 
 
     public getPercentage(): number {
-        let percentage = Math.floor(this.voltage / this.TOTAL_VOLTAGE * 100);
+        let percentage = Math.floor(this.voltage / this.MAX_VOLTAGE * 100);
         
         if (percentage > 100) { percentage = 100; }
         return percentage;
     }
+
 
     public changeRandom() {
         this.voltage += this.random(2);
@@ -52,5 +55,9 @@ export class Battery {
 
     public isBatteryLow(): boolean {
         return this.getPercentage() < 75;
+    }
+
+    public getTotalCharge(): number {
+        return 0;
     }
 }

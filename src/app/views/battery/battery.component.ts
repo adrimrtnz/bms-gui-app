@@ -20,11 +20,14 @@ export class BatteryComponent implements OnInit {
       
   }
 
+
   public getBatteryStyle(): object {
     const inversePercentage = 100 - this.battery.getPercentage();
+    
     this.batteryClasses = {
       "low-battery" : this.battery.isBatteryLow()
     };
+
     return {
       'clip-path': `polygon(
         0 ${inversePercentage}%,

@@ -6,13 +6,14 @@ import { Battery } from '../models/Battery';
 })
 export class BatteriesService {
 
-  private readonly NUMBER_OF_BATTERIES = 3;
+  private readonly NUMBER_OF_BATTERIES = 6;
   private batteries: Battery[] = [];
   
 
   constructor() { 
     this.initializeBatteries();
     setInterval( () => this.changeRandom(), 500);
+    setInterval( () => this.getTotalCharge(), 500);
   }
 
   ngOnInit() {
@@ -33,4 +34,14 @@ export class BatteriesService {
 
   public getBatteries() { return this.batteries; }
 
+  public getTotalCharge(): number {
+    let sum = 0;
+    
+    for (let i = 0; i < this.NUMBER_OF_BATTERIES; i++) {
+      sum += this.batteries[i].getPercentage();
+    }
+
+    console.log("Total mean charge: " + Math.floor(sum / this.batteries.length) + "%");
+    return Math.floor(sum / this.batteries.length);
+  }
 }

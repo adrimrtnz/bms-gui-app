@@ -1,20 +1,29 @@
 <div class="bms-tab">
 
-  <h1 class="title">BMS LV</h1>
+  <div class="header">
+     <h1 class="title">BMS LV</h1>
+    <img class="logo" src="../assets/img/logo.svg" alt="">
+  </div>
   
   <br>
 
     <div class="batteries-wrapper">
       <table>
+
         <td>
-          <app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery>
+          <app-battery *ngFor="let number of [0,1,2]" [battery]="this.batteries[number]"></app-battery>
         </td>
-        <td>
+
+        <td class="central-item">
           <img class="general-charge-img" src="../assets/img/charge.svg" alt="">
+          <p class="charge-value">15%</p>
+          <p class="charge-text">CHARGE</p>
         </td>
+
         <td>
-          <app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery>
+          <app-battery class="reverse" *ngFor="let number of [3,4,5]" [battery]="this.batteries[number]"></app-battery>
         </td>
+
       </table>
     </div>
   
@@ -28,7 +37,7 @@
 
     <div class="container">
         <img class="lighting-icon" src="../../assets/img/lightning.svg" alt="" >
-        <p class="state-machine">OPERATIONAL STATE: METER DATOS</p>
+        <p class="state-machine">OPERATIONAL STATE: _METER DATOS_</p>
     </div>
 
   </div>

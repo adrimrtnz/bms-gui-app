@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { BatteriesService } from './services/batteries.service';
 import { Battery } from './models/Battery';
-import { TempSensorService } from './services/temp-sensor.service';
-import { TempSensor } from './models/TempSensor';
+
 
 @Component({
   selector: 'app-root',
@@ -11,16 +10,14 @@ import { TempSensor } from './models/TempSensor';
 })
 export class AppComponent {
 
-  title = 'battery-app';
+  title = 'BMS-LV';
 
   public batteries : Battery[];
-  public tempSensors : TempSensor[];
 
-  constructor( private batteriesService: BatteriesService, private tempSensorService: TempSensorService ) { 
+
+  constructor( private batteriesService: BatteriesService) { 
     this.batteries = batteriesService.getBatteries();
     console.log(this.batteries);
 
-    this.tempSensors = tempSensorService.getTempSensors();
-    console.log(this.tempSensors);
   }
 }
