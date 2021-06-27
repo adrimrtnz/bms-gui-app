@@ -6,7 +6,7 @@ import { Battery } from '../models/Battery';
 })
 export class BatteriesService {
 
-  private readonly NUMBER_OF_BATTERIES = 2;
+  private readonly NUMBER_OF_BATTERIES = 3;
   private batteries: Battery[] = [];
   
 

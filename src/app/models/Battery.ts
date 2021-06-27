@@ -5,7 +5,6 @@ export class Battery {
     private id: number;
     private voltage: number;
     private temperature1: number;
-    private temperature2: number;
 
 
     constructor(id: number){
@@ -13,14 +12,13 @@ export class Battery {
         
         this.voltage = 0;
         this.temperature1 = 0;
-        this.temperature2 = 0;
     }
 
 
     public getId(): number { return this.id; }
     public getVoltage(): number { return this.voltage > this.TOTAL_VOLTAGE ? this.TOTAL_VOLTAGE : this.voltage; }
     public getTemperature1(): number { return this.temperature1; }
-    public getTemperature2(): number { return this.temperature2; }
+
 
     public getPercentage(): number {
         let percentage = Math.floor(this.voltage / this.TOTAL_VOLTAGE * 100);
@@ -32,7 +30,6 @@ export class Battery {
     public changeRandom() {
         this.voltage += this.random(2);
         this.temperature1 += this.random(2);
-        this.temperature2 += this.random(2);
     }
 
     private random(n: number): number {
@@ -42,7 +39,6 @@ export class Battery {
     public updateInfo(voltage: number, temperature1: number, temperature2: number) {
         this.voltage = voltage;
         this.temperature1 = temperature1;
-        this.temperature2 = temperature2;
     }
 
     public isBatteryLow(): boolean {

@@ -1,18 +1,16 @@
 <div class="bms-tab">
 
-  <h1 class="title">Hyperloop Training Center</h1>
+  <h1 class="title">BMSA</h1>
   
   <br>
 
-  <div class="batteries-wrapper">
-    <app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery>
-  </div>
+    <div class="batteries-wrapper">
+      <table>
+        <td><app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery></td>
+        <td><app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery></td>
+      </table>
+    </div>
   
-
   <br>
-
-  <div class="temp-sensors-wrapper">
-    <app-temp-sensor *ngFor="let tempSensor of this.tempSensors" [tempSensor]="tempSensor"></app-temp-sensor>
-  </div>
 
 </div>
