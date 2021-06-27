@@ -6,11 +6,15 @@
 
     <div class="batteries-wrapper">
       <table>
-        <td><app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery></td>
+        <td>
+          <app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery>
+        </td>
         <td>
           <img class="general-charge-img" src="../assets/img/charge.svg" alt="">
         </td>
-        <td><app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery></td>
+        <td>
+          <app-battery *ngFor="let battery of this.batteries" [battery]="battery"></app-battery>
+        </td>
       </table>
     </div>
   
