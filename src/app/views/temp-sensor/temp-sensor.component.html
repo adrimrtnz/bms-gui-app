@@ -1,0 +1,28 @@
+<div class="temp-sensor-wrapper">
+
+    <div class="image-wrapper">
+        <img class="outline" src="../../assets/img/temp-outline.svg" alt="">
+        <img [ngStyle]="this.getTempSensorStyle()" class="filling" src="../../assets/img/temp-filling.svg" alt="">
+    </div>
+
+    <div class="information-wrapper">
+
+        <span class="title">BMS TEMP SENSOR Nº {{this.tempSensor.getId()}}</span>
+
+        <div class="table-wrapper">
+
+            <table>
+                
+                <tr>
+                    <td class="property-title">TEMP: </td>
+                    <td class="property-value"> {{this.tempSensor.getTemp()}} </td>
+                    <td class="property-units">DEG</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

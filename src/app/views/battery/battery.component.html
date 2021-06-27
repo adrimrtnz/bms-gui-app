@@ -1,0 +1,46 @@
+<div class="battery-wrapper">
+
+    <div class="image-wrapper">
+        <img class="outline" src="../../assets/img/battery-outline.svg" alt="">
+        <img [ngStyle]="this.getBatteryStyle()" class = "filling" [ngClass]="this.batteryClasses" src="../../assets/img/battery-filling.svg" alt="">
+    </div>
+
+    <div class="information-wrapper">
+
+        <span class="title">BATTERY Nº {{this.battery.getId()}} </span>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <tr>
+                    <td class="property-title"> VOLTAGE:</td>
+                    <td class="property-value"> {{this.battery.getVoltage()}} </td>
+                    <td class="property-units">V</td>
+                </tr>
+                    
+                <tr>
+                    <td class="property-title"> TEMP1 :</td>
+                    <td class="property-value"> {{this.battery.getTemperature1()}} </td>
+                    <td class="property-units">DEG</td>
+                </tr>
+
+                <tr>
+                    <td class="property-title"> TEMP2 :</td>
+                    <td class="property-value"> {{this.battery.getTemperature2()}} </td>
+                    <td class="property-units">DEG</td>
+                </tr>
+
+                <tr>
+                    <td class="property-title"> CHARGE :</td>
+                    <td class="property-value"> {{this.battery.getPercentage()}} </td>
+                    <td class="property-units">%</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+.title {
+    text-align: center;
+}
+
+.batteries-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.temp-sensors-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-width: 100%;
+    min-height: 100%;
+}

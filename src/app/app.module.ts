@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BatteryComponent } from './views/battery/battery.component';
+import { TempSensorComponent } from './views/temp-sensor/temp-sensor.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BatteryComponent,
+    TempSensorComponent
   ],
   imports: [
     BrowserModule,
