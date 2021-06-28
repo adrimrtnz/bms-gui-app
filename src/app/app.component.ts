@@ -30,10 +30,14 @@ export class AppComponent {
     }
 
     if (!this.batteriesService.isStarted()) {
-      return 'READY TO RUN';
+      return 'READY TO CHARGE';
+    }
+
+    if (this.batteriesService.getTotalCharge() >= 100) {
+      return 'FULLY CHARGED';
     }
     
-    return 'RUNNING';
+    return 'CHARGING';
   }
 
   public startApp() {
