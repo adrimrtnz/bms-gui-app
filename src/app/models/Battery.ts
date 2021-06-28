@@ -73,7 +73,7 @@ export class Battery {
         this.voltage = this.voltageValues[this.random(this.voltageValues.length)];
         this.current = this.currentValues[this.random(this.currentValues.length)]
         this.temperature = this.tempValues[this.random(this.tempValues.length)];
-        this.charge += this.random(10);
+        this.charge += this.random(2);
     }
 
     private random(n: number): number {
