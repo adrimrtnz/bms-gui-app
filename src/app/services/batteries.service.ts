@@ -41,7 +41,15 @@ export class BatteriesService {
       sum += this.batteries[i].getPercentage();
     }
 
-    console.log("Total mean charge: " + Math.floor(sum / this.batteries.length) + "%");
+    //console.log("Total mean charge: " + Math.floor(sum / this.batteries.length) + "%");
     return Math.floor(sum / this.batteries.length);
+  }
+
+  public isStarted(): boolean { return this.batteries[0].getIsStarted(); }
+
+  public startApp() {
+    for (let i = 0; i < this.NUMBER_OF_BATTERIES; i++) {
+      this.batteries[i].startApp();
+    }
   }
 }

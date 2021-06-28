@@ -28,15 +28,17 @@ export class BatteryComponent implements OnInit {
     
     this.batteryClasses = {
       "low-battery" : this.battery.isBatteryLow(),
-      "full-battery" : this.battery.isFullCharge()
+      "full-battery" : this.battery.isFullCharge(),
     };
 
     this.voltageProblem = {
       "voltage-problem" : this.battery.getVoltage() > this.battery.getMaxVoltage(),
+      "not-started" : !this.battery.getIsStarted()
     }
 
     this.tempProblem = {
       "temp-problem" : this.battery.getTemp() > this.battery.getMaxTemp(),
+      "not-started" : !this.battery.getIsStarted()
     }
 
     return {

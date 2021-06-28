@@ -18,6 +18,7 @@
           <img class="general-charge-img" src="../assets/img/charge.svg" alt="">
           <p class="charge-value">{{getTotalCharge()}}%</p>
           <p class="charge-text">CHARGE</p>
+          <button class="op-mode-button" (click)="startApp()">OPERATIONAL MODE: <br/>{{getState()}}</button>
         </td>
 
         <td>
@@ -37,7 +38,7 @@
 
     <div class="container">
         <img class="lighting-icon" src="../../assets/img/lightning.svg" alt="" >
-        <p class="state-machine">OPERATIONAL STATE: _METER DATOS_</p>
+        <p class="state-machine">OPERATIONAL STATE: {{getState()}}</p>
     </div>
 
   </div>

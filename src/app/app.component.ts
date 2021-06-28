@@ -24,4 +24,16 @@ export class AppComponent {
     return this.batteriesService.getTotalCharge();
   }
 
+  public getState(): string {
+    if (!this.batteriesService.isStarted()) {
+      return 'READY TO RUN';
+    }
+    
+    return "RUNNING";
+  }
+
+  public startApp() {
+    this.batteriesService.startApp();
+  }
+
 }
