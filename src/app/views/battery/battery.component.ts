@@ -33,12 +33,12 @@ export class BatteryComponent implements OnInit {
 
     this.voltageProblem = {
       "voltage-problem" : this.battery.getVoltage() > this.battery.getMaxVoltage(),
-      "not-started" : !this.battery.getIsStarted()
+      "not-started" : !this.battery.getIsStarted() && !this.battery.getIfFail()
     }
 
     this.tempProblem = {
       "temp-problem" : this.battery.getTemp() > this.battery.getMaxTemp(),
-      "not-started" : !this.battery.getIsStarted()
+      "not-started" : !this.battery.getIsStarted() && !this.battery.getIfFail()
     }
 
     return {

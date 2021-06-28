@@ -14,7 +14,7 @@ export class Battery {
     private charge: number;
 
     private isStarted: boolean = false;
-    private isFailling: boolean = (this.getVoltage() > this.getMaxVoltage()) || (this.getTemp() > this.getMaxTemp());
+    private isFailling: boolean = (this.getVoltage() > this.getMaxVoltage() || this.getTemp() > this.getMaxTemp());
 
     private voltageValues = [ 3.7, 3.8, 3.9, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7]
     private tempValues = [27.5, 27.6, 27.7, 27.8, 28.1, 28.2]
@@ -39,10 +39,16 @@ export class Battery {
     public getIsStarted() : boolean { return this.isStarted; }
     public getIfFail() : boolean { return this.isFailling; }
 
-    public startApp() { this.isStarted = true; }
+    public startApp() {
+        console.log(this.isFailling)
+
+        if (!this.isFailling) {
+            this.isStarted = true; 
+        }
+    }
 
     //public getVoltage(): number { return this.MAX_VOLTAGE * 2; }
-    //public getTemp(): number { return this.temperature * 2; }
+    //public getTemp(): number { return this.MAX_TEMP * 2; }
 
     public getPercentage(): number {
         if(!this.isStarted || this.isFailling) { return 0; }
