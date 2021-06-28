@@ -21,11 +21,18 @@
     flex-wrap: wrap;
     min-width: 100%;
     min-height: 100%;
+    
+    
 }
 
 .reverse {
-    background-color: blue;
+    display: flex;
+    flex-direction: row-reverse; 
+    direction: rtl;
+    margin: -10px;                  // Fix the margin applied by display: flex
+    //background-color: blue;
 }
+
 
 .central-item {
     position: relative;
@@ -34,6 +41,7 @@
 
     .general-charge-img {
         vertical-align: middle;
+        z-index: 10;
     }
 
     .general-charge-img-filling
