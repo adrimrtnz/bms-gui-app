@@ -40,4 +40,14 @@ export class AppComponent {
     this.batteriesService.startApp();
   }
 
+  public getGeneralChargeStyle() : object {
+    return {
+        'clip-path': `polygon(
+        0 ${100 - this.getTotalCharge()}%,
+        100% ${100 - this.getTotalCharge()}%,
+        100% 100%,
+        0 100%
+      )`
+    };
+  }
 }

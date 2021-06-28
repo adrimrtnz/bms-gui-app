@@ -28,7 +28,7 @@ export class BatteryComponent implements OnInit {
     
     this.batteryClasses = {
       "low-battery" : this.battery.isBatteryLow(),
-      "full-battery" : this.battery.isFullCharge(),
+      "full-battery" : !this.battery.isBatteryLow()/*this.battery.isFullCharge()*/,
     };
 
     this.voltageProblem = {
@@ -40,6 +40,7 @@ export class BatteryComponent implements OnInit {
       "temp-problem" : this.battery.getTemp() > this.battery.getMaxTemp(),
       "not-started" : !this.battery.getIsStarted() && !this.battery.getIfFail()
     }
+
 
     return {
       'clip-path': `polygon(

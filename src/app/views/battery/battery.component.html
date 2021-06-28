@@ -20,12 +20,19 @@
                         Min: {{this.battery.getMinVoltage()}}V | Out: {{this.battery.getVoltage()}}V | Max: {{this.battery.getMaxVoltage()}}V
                     </td>
                 </tr>
+
+                <tr>
+                    <td class="property-value" [ngClass]="this.voltageProblem">
+                        Min: {{this.battery.getMinCurrent()}}mA | Out: {{this.battery.getCurrent()}}mA | Max: {{this.battery.getMaxCurrent()}}mA
+                    </td>
+                </tr>
                     
                 <tr>
                     <td class="property-value" [ngClass]="this.tempProblem">
                         Min: {{this.battery.getMinTemp()}}ºC | Out: {{this.battery.getTemp()}}ºC | Max: {{this.battery.getMaxTemp()}}ºC
                     </td>
                 </tr>
+                
 
             </table>
 
