@@ -46,6 +46,7 @@ export class BatteriesService {
   }
 
   public isStarted(): boolean { return this.batteries[0].getIsStarted(); }
+  public isFailling(): boolean { return this.batteries[0].getIfFail(); }
 
   public startApp() {
     for (let i = 0; i < this.NUMBER_OF_BATTERIES; i++) {

@@ -25,11 +25,15 @@ export class AppComponent {
   }
 
   public getState(): string {
+    if (this.batteriesService.isFailling()) {
+      return 'UNABLE TO RUN'
+    }
+
     if (!this.batteriesService.isStarted()) {
       return 'READY TO RUN';
     }
     
-    return "RUNNING";
+    return 'RUNNING';
   }
 
   public startApp() {
