@@ -41,17 +41,31 @@
 
     .general-charge-img {
         vertical-align: middle;
-        z-index: 10;
+        z-index: 1;
     }
 
+    /* //Style used for charge-filling.svg
     .general-charge-img-filling
     {
         position: absolute;
         left: 13px;
         top: 39px;
         opacity: 0.5;
-        z-index: 0;    
+        z-index: -1;    
     }
+    */
+
+    //Style used for charge-filling2.png
+    .general-charge-img-filling
+    {
+        position: absolute;
+        transform: scale(0.24);
+        left: -479px;
+        top: -449px;
+        opacity: 0.5;
+        z-index: -1;    
+    }
+
 
     .charge-value {
         position: relative;
@@ -59,6 +73,7 @@
         font-size: 80px;
         bottom: 215px;
         color: white;
+        z-index: 2;
     }
 
     .charge-text {
@@ -68,6 +83,7 @@
         font-size: 20px;
         bottom: 190px;
         letter-spacing: 10px;
+        z-index: 3;
     }
 
     .op-mode-button {

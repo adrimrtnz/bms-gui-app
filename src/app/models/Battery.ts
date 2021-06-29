@@ -8,7 +8,7 @@ export class Battery {
     private readonly MIN_CURRENT = 0;
     private readonly MAX_CURRENT = 1500;
     private readonly MIN_TEMP = 0;
-    private readonly MAX_TEMP = 45;
+    private readonly MAX_TEMP = 75;
 
     private id : number;
     private voltage : number;
