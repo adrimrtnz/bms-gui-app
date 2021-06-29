@@ -55,7 +55,7 @@ export class BatteriesService {
     return false; 
   }
 
-  public isFailling(): boolean { 
+  public hasFails(): boolean { 
     for (let i = 0; i < this.NUMBER_OF_BATTERIES; i++) {
       if (this.batteries[i].getIfFail())
       { 

@@ -17,7 +17,7 @@ export class Battery {
     private charge : number;
 
     private isStarted : boolean = false;
-    private isFailling : boolean = (this.getVoltage() > this.getMaxVoltage() || this.getTemp() > this.getMaxTemp() || this.getCurrent() > this.getMaxCurrent());
+    private hasFails : boolean = (this.getVoltage() > this.getMaxVoltage() || this.getTemp() > this.getMaxTemp() || this.getCurrent() > this.getMaxCurrent());
     private isRunning : boolean = false;
 
     private voltageValues = [ 3.7, 3.8, 3.9, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7];
@@ -46,20 +46,20 @@ export class Battery {
     public getMaxTemp() : number { return this.MAX_TEMP; }
     public getMinTemp() : number { return this.MIN_TEMP; }
     public getIsStarted() : boolean { return this.isStarted; }
-    public getIfFail() : boolean { return this.isFailling; }
+    public getIfFail() : boolean { return this.hasFails; }
     public getIfRunning() : boolean { return this.isRunning; }
 
     public startApp() {
-        console.log(this.isFailling)
+        console.log(this.hasFails)
         this.isRunning = false;
 
-        if (!this.isFailling) {
+        if (!this.hasFails) {
             this.isStarted = true; 
         }
     }
 
     public discharge() {
-        if (!this.isFailling && this.isFullCharge()) {
+        if (!this.hasFails && this.isFullCharge()) {
              this.isRunning = true;
         }
     }
@@ -69,7 +69,7 @@ export class Battery {
     //public getTemp(): number { return this.MAX_TEMP * 2; }
 
     public getPercentage(): number {
-        if(!this.isStarted || this.isFailling) { return 0; }
+        if(!this.isStarted || this.hasFails) { return 0; }
         let percentage = Math.floor(this.charge);
         
         if (percentage > 100) { percentage = 100; }
@@ -78,10 +78,17 @@ export class Battery {
 
 
     public changeRandom() {
-        if(!this.isStarted || this.isFailling) { return; }
-        this.voltage = this.voltageValues[this.random(this.voltageValues.length)];
-        this.current = this.currentValues[this.random(this.currentValues.length)]
-        this.temperature = this.tempValues[this.random(this.tempValues.length)];
+        if(!this.isStarted || this.hasFails) { return; }
+
+        if (this.getCharge() > 0 && this.getCharge() < 100) {
+            this.voltage = this.voltageValues[this.random(this.voltageValues.length)];
+            this.current = this.currentValues[this.random(this.currentValues.length)]
+            this.temperature = this.tempValues[this.random(this.tempValues.length)];
+        } else {
+            this.voltage = 0;
+            this.current = 0;
+            this.temperature = this.tempValues[this.random(this.tempValues.length)];
+        }
 
         if (!this.isRunning) {
             this.charge += this.random(2);
@@ -98,12 +105,12 @@ export class Battery {
     }
 
     private random(n: number): number {
-        if(!this.isStarted || this.isFailling) { return 0; }
+        if(!this.isStarted || this.hasFails) { return 0; }
         return Math.floor( Math.random() * n );
     }
 
     public updateInfo(voltage: number, temperature: number) {
-        if(!this.isStarted || this.isFailling) { return; }
+        if(!this.isStarted || this.hasFails) { return; }
         this.voltage = voltage;
         this.temperature = temperature;
     }

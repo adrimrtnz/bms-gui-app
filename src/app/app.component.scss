@@ -9,6 +9,12 @@
     .title {
         padding-right: 1350px;
         letter-spacing: 2px;
+        animation-name: run;
+        animation-duration: 2s;
+    }
+    @keyframes run {
+        0% { padding-right: 2800px; }
+        100% { padding-right: 1350px; }
     }
 }
 

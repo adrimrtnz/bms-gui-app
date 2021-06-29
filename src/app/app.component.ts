@@ -25,7 +25,7 @@ export class AppComponent {
   }
 
   public getState(): string {
-    if (this.batteriesService.isFailling()) {
+    if (this.batteriesService.hasFails()) {
       return 'FAULT'
     }
 
@@ -45,10 +45,10 @@ export class AppComponent {
   }
 
   public startApp() {
-    if (!this.batteriesService.isFailling() && (this.batteriesService.getTotalCharge() == 0)) {
+    if (!this.batteriesService.hasFails() && (this.batteriesService.getTotalCharge() == 0)) {
       this.batteriesService.startApp();
     }
-    if (!this.batteriesService.isFailling() && (this.batteriesService.getTotalCharge() == 100)) {
+    if (!this.batteriesService.hasFails() && (this.batteriesService.getTotalCharge() == 100)) {
       this.batteriesService.discharge();
     }
   }
