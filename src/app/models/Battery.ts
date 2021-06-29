@@ -95,7 +95,7 @@ export class Battery {
         }
         else {
             if (this.charge <= 0) { this.charge = 0; }
-            else { this.charge -= 5; }
+            else { this.charge -= 2; }
         }
 
         if (this.isRunning && this.isStarted && this.getPercentage() === 0) {
