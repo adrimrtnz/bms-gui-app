@@ -26,22 +26,31 @@ export class AppComponent {
 
   public getState(): string {
     if (this.batteriesService.isFailling()) {
-      return 'UNABLE TO RUN'
+      return 'FAULT'
     }
 
-    if (!this.batteriesService.isStarted()) {
-      return 'READY TO CHARGE';
+    else if (!this.batteriesService.isStarted()) {
+      return 'IDLE';
     }
 
-    if (this.batteriesService.getTotalCharge() >= 100) {
+    else if (this.batteriesService.getTotalCharge() >= 100) {
       return 'FULLY CHARGED';
+    }
+
+    else if (this.batteriesService.isRunning()) {
+      return "DISCHARGING";
     }
     
     return 'CHARGING';
   }
 
   public startApp() {
-    this.batteriesService.startApp();
+    if (!this.batteriesService.isFailling() && (this.batteriesService.getTotalCharge() == 0)) {
+      this.batteriesService.startApp();
+    }
+    if (!this.batteriesService.isFailling() && (this.batteriesService.getTotalCharge() == 100)) {
+      this.batteriesService.discharge();
+    }
   }
 
   public getGeneralChargeStyle() : object {

@@ -45,12 +45,45 @@ export class BatteriesService {
     return Math.floor(sum / this.batteries.length);
   }
 
-  public isStarted(): boolean { return this.batteries[0].getIsStarted(); }
-  public isFailling(): boolean { return this.batteries[0].getIfFail(); }
+  public isStarted(): boolean { 
+    for (let i = 0; i < this.NUMBER_OF_BATTERIES; i++) {
+      if (this.batteries[i].getIsStarted())
+      { 
+        return true;
+      }
+    }
+    return false; 
+  }
+
+  public isFailling(): boolean { 
+    for (let i = 0; i < this.NUMBER_OF_BATTERIES; i++) {
+      if (this.batteries[i].getIfFail())
+      { 
+        return true;
+      }
+    }
+    return false; 
+  }
+
+  public isRunning(): boolean { 
+    for (let i = 0; i < this.NUMBER_OF_BATTERIES; i++) {
+      if (this.batteries[i].getIfRunning())
+      { 
+        return true;
+      }
+    }
+    return false; 
+  }
 
   public startApp() {
     for (let i = 0; i < this.NUMBER_OF_BATTERIES; i++) {
       this.batteries[i].startApp();
+    }
+  }
+
+  public discharge() {
+    for (let i = 0; i < this.NUMBER_OF_BATTERIES; i++) {
+      this.batteries[i].discharge();
     }
   }
 }

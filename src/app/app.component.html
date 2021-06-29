@@ -15,11 +15,15 @@
         </td>
 
         <td class="central-item">
+
           <img class="general-charge-img" src="../assets/img/charge.svg" alt="">
           <img [ngStyle]="this.getGeneralChargeStyle()" class="general-charge-img-filling" src="../assets/img/charge-filling2.png" alt="">
+
           <p class="charge-value" id="general-charge">{{getTotalCharge()}}%</p>
           <p class="charge-text">CHARGE</p>
+          
           <button class="op-mode-button" (click)="startApp()">OPERATIONAL MODE: <br/>{{getState()}}</button>
+
         </td>
 
         <td>

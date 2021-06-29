@@ -6,7 +6,7 @@ export class Battery {
     private readonly MIN_VOLTAGE = 0;
     private readonly MAX_VOLTAGE = 5;
     private readonly MIN_CURRENT = 0;
-    private readonly MAX_CURRENT = 1500;
+    private readonly MAX_CURRENT = 60;
     private readonly MIN_TEMP = 0;
     private readonly MAX_TEMP = 75;
 
@@ -18,9 +18,10 @@ export class Battery {
 
     private isStarted : boolean = false;
     private isFailling : boolean = (this.getVoltage() > this.getMaxVoltage() || this.getTemp() > this.getMaxTemp() || this.getCurrent() > this.getMaxCurrent());
+    private isRunning : boolean = false;
 
     private voltageValues = [ 3.7, 3.8, 3.9, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7];
-    private currentValues = [1395, 1396, 1397, 1398, 1399, 1400, 1401, 1402, 1403, 1404, 1405];
+    private currentValues = [9.5, 9.6, 9.7, 9.8, 9.9, 10.0, 10.1, 10.2, 10.3, 10.4, 10.5];
     private tempValues = [27.5, 27.6, 27.7, 27.8, 28.1, 28.2];
 
     constructor(id: number){
@@ -46,12 +47,20 @@ export class Battery {
     public getMinTemp() : number { return this.MIN_TEMP; }
     public getIsStarted() : boolean { return this.isStarted; }
     public getIfFail() : boolean { return this.isFailling; }
+    public getIfRunning() : boolean { return this.isRunning; }
 
     public startApp() {
         console.log(this.isFailling)
+        this.isRunning = false;
 
         if (!this.isFailling) {
             this.isStarted = true; 
+        }
+    }
+
+    public discharge() {
+        if (!this.isFailling && this.isFullCharge()) {
+             this.isRunning = true;
         }
     }
 
@@ -73,7 +82,19 @@ export class Battery {
         this.voltage = this.voltageValues[this.random(this.voltageValues.length)];
         this.current = this.currentValues[this.random(this.currentValues.length)]
         this.temperature = this.tempValues[this.random(this.tempValues.length)];
-        this.charge += this.random(2);
+
+        if (!this.isRunning) {
+            this.charge += this.random(2);
+        }
+        else {
+            if (this.charge <= 0) { this.charge = 0; }
+            else { this.charge -= 5; }
+        }
+
+        if (this.isRunning && this.isStarted && this.getPercentage() === 0) {
+            this.isRunning = false;
+            this.isStarted = false;
+        }
     }
 
     private random(n: number): number {
