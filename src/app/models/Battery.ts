@@ -73,6 +73,7 @@ export class Battery {
         let percentage = Math.floor(this.charge);
         
         if (percentage > 100) { percentage = 100; }
+        else if (percentage < 0) { percentage = 0; }
         return percentage;
     }
 
@@ -91,11 +92,11 @@ export class Battery {
         }
 
         if (!this.isRunning) {
-            this.charge += this.random(2);
+            this.charge += this.random(10);
         }
         else {
             if (this.charge <= 0) { this.charge = 0; }
-            else { this.charge -= 2; }
+            else { this.charge -= 10; }
         }
 
         if (this.isRunning && this.isStarted && this.getPercentage() === 0) {
