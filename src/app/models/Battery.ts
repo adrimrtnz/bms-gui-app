@@ -3,7 +3,7 @@ import { BatteryComponent } from "../views/battery/battery.component";
 
 export class Battery {
 
-    // value for random charge and discharge
+    // value for random charge and discharge. Min value = 2
     private readonly MAX_GROWTH = 2;
 
     private readonly MIN_VOLTAGE = 0;
