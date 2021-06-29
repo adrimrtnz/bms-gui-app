@@ -3,6 +3,9 @@ import { BatteryComponent } from "../views/battery/battery.component";
 
 export class Battery {
 
+    // value for random charge and discharge
+    private readonly MAX_GROWTH = 2;
+
     private readonly MIN_VOLTAGE = 0;
     private readonly MAX_VOLTAGE = 5;
     private readonly MIN_CURRENT = 0;
@@ -92,11 +95,11 @@ export class Battery {
         }
 
         if (!this.isRunning) {
-            this.charge += this.random(10);
+            this.charge += this.random(this.MAX_GROWTH);
         }
         else {
             if (this.charge <= 0) { this.charge = 0; }
-            else { this.charge -= 10; }
+            else { this.charge -= this.random(this.MAX_GROWTH); }
         }
 
         if (this.isRunning && this.isStarted && this.getPercentage() === 0) {
