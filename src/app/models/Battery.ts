@@ -4,7 +4,7 @@ import { BatteryComponent } from "../views/battery/battery.component";
 export class Battery {
 
     // value for random charge and discharge. Min value = 2
-    private readonly MAX_GROWTH = 2;
+    private readonly MAX_GROWTH = 5;
 
     private readonly MIN_VOLTAGE = 0;
     private readonly MAX_VOLTAGE = 5;
@@ -52,6 +52,12 @@ export class Battery {
     public getIfFail() : boolean { return this.hasFails; }
     public getIfRunning() : boolean { return this.isRunning; }
 
+
+    // functions to test error feedback
+    //public getVoltage(): number { return this.MAX_VOLTAGE * 2; }
+    //public getCurrent(): number { return this.MAX_CURRENT * 2; }
+    //public getTemp(): number { return this.MAX_TEMP * 2; }
+
     public startApp() {
         console.log(this.hasFails)
         this.isRunning = false;
@@ -67,9 +73,7 @@ export class Battery {
         }
     }
 
-    //public getVoltage(): number { return this.MAX_VOLTAGE * 2; }
-    //public getCurrent(): number { return this.MAX_CURRENT * 2; }
-    //public getTemp(): number { return this.MAX_TEMP * 2; }
+    
 
     public getPercentage(): number {
         if(!this.isStarted || this.hasFails) { return 0; }
