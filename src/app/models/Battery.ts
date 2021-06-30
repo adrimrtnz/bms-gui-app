@@ -1,6 +1,3 @@
-import { BatteriesService } from "../services/batteries.service";
-import { BatteryComponent } from "../views/battery/battery.component";
-
 export class Battery {
 
     // value for random charge and discharge. Min value = 2
@@ -51,7 +48,6 @@ export class Battery {
     public getIsStarted() : boolean { return this.isStarted; }
     public getIfFail() : boolean { return this.hasFails; }
     public getIfRunning() : boolean { return this.isRunning; }
-
 
     // functions to test error feedback
     //public getVoltage(): number { return this.MAX_VOLTAGE * 2; }
