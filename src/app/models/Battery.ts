@@ -1,4 +1,8 @@
+import { BoardInterfaceService } from "../services/board-interface.service";
+
 export class Battery {
+
+    private boardInterface = new BoardInterfaceService;
 
     // value for random charge and discharge. Min value = 2
     private readonly MAX_GROWTH = 5;
@@ -20,9 +24,7 @@ export class Battery {
     private hasFails : boolean = (this.getVoltage() > this.getMaxVoltage() || this.getTemp() > this.getMaxTemp() || this.getCurrent() > this.getMaxCurrent());
     private isRunning : boolean = false;
 
-    private voltageValues = [ 3.7, 3.8, 3.9, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7];
-    private currentValues = [9.5, 9.6, 9.7, 9.8, 9.9, 10.0, 10.1, 10.2, 10.3, 10.4, 10.5];
-    private tempValues = [27.5, 27.6, 27.7, 27.8, 28.1, 28.2];
+   
 
     constructor(id: number){
         this.id = id;
@@ -36,9 +38,6 @@ export class Battery {
 
     public getId() : number { return this.id; }
     public getCharge() : number { return this.charge; }
-    public getVoltage() : number { return this.voltage; }
-    public getCurrent() : number { return this.current; }
-    public getTemp() : number { return this.temperature; }
     public getMaxVoltage() : number { return this.MAX_VOLTAGE; }
     public getMinVoltage() : number { return this.MIN_VOLTAGE; }
     public getMaxCurrent() : number { return this.MAX_CURRENT; }
@@ -48,6 +47,25 @@ export class Battery {
     public getIsStarted() : boolean { return this.isStarted; }
     public getIfFail() : boolean { return this.hasFails; }
     public getIfRunning() : boolean { return this.isRunning; }
+
+    public getVoltage() : number { 
+        if (this.isStarted) {
+            return this.boardInterface.getCellVoltage(); 
+        }   
+        return 0;
+    }
+    public getCurrent() : number { 
+        if (this.isStarted) {
+            return this.boardInterface.getCellCurrent();
+        }
+        return 0; 
+    }
+    public getTemp() : number { 
+        if (this.isStarted) {
+            return this.boardInterface.getCellTemperature(); 
+        }
+        return 0;
+    }
 
     // functions to test error feedback
     //public getVoltage(): number { return this.MAX_VOLTAGE * 2; }
@@ -85,13 +103,10 @@ export class Battery {
         if(!this.isStarted || this.hasFails) { return; }
 
         if (this.getCharge() > 0 && this.getCharge() < 100) {
-            this.voltage = this.voltageValues[this.random(this.voltageValues.length)];
-            this.current = this.currentValues[this.random(this.currentValues.length)]
-            this.temperature = this.tempValues[this.random(this.tempValues.length)];
+            // to be deleted
         } else {
             this.voltage = 0;
             this.current = 0;
-            this.temperature = this.tempValues[this.random(this.tempValues.length)];
         }
 
         if (!this.isRunning) {
